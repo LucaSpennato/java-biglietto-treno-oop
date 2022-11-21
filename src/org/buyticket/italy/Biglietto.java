@@ -79,7 +79,13 @@ public class Biglietto {
 		
 		BigDecimal price = PRICE_KM.multiply(BigDecimal.valueOf(kmToRide));
 		
-		return checkDiscount(price).floatValue();
+		float finalPrice = checkDiscount(price).floatValue();
+		
+		if(flexible) {
+			return finalPrice + ((finalPrice * 10f) / 100f);
+		}else {			
+			return checkDiscount(price).floatValue();
+		}
 	}
 	
 	public boolean isFlexible() {
@@ -92,7 +98,11 @@ public class Biglietto {
 	
 	public LocalDate getExpDate() {
 		
-		return date.plusDays(NORMAL_EXP);
+		if(flexible) {
+			return date.plusDays(FLEX_EXP);
+		}else {
+			return date.plusDays(NORMAL_EXP);
+		}
 		
 	}
 

@@ -17,7 +17,20 @@ public class Biglietteria {
 			System.out.print("Inserisci la tua età: ");
 			int userAge = sc.nextInt();
 			
-			Biglietto ticket = new Biglietto(userKm, userAge, false);
+			System.out.println("Flessibilità data scadenza, se si, avrà una maggiorazione del 10%");
+			System.out.println("1- Si\n2- No");
+			int flexChoice = sc.nextInt();
+			boolean flexExp = false;
+			
+			if(flexChoice == 1) {
+				flexExp = true;
+			}else if(flexChoice == 2) {
+				flexExp = false;
+			}else {
+				System.out.println("Dati inseriti non corretti.");
+			}
+			
+			Biglietto ticket = new Biglietto(userKm, userAge, flexExp);
 			System.out.println(ticket);
 		} catch (Exception e) {
 			// e.printStackTrace();
