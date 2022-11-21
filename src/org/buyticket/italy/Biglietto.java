@@ -1,6 +1,7 @@
 package org.buyticket.italy;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 public class Biglietto {
 
@@ -10,15 +11,26 @@ public class Biglietto {
 	
 	private static final BigDecimal MINOR_DISCOUNT = new BigDecimal(0.2);
 	
+	private static final int NORMAL_EXP = 30; 
+	
+	private static final int FLEX_EXP = 90; 
+	
 	private int kmToRide;
 	
 	private int age;
 	
+	LocalDate date = null;
 	
-	public Biglietto(int kmToRide, int age) throws Exception {
+	private boolean flexible;
+	
+	
+	public Biglietto(int kmToRide, int age, boolean flexible) throws Exception {
 		
 		isValidKm(kmToRide);
 		isValidAge(age);
+		
+		date = LocalDate.now();
+		setFlexible(flexible);
 	}
 
 
@@ -49,7 +61,6 @@ public class Biglietto {
 	
 	private BigDecimal checkDiscount(BigDecimal price) {
 		
-		BigDecimal hund = new BigDecimal(100);
 		BigDecimal discountedPrice = null;
 		
 		if(age >= 65) {
@@ -71,11 +82,27 @@ public class Biglietto {
 		return checkDiscount(price).floatValue();
 	}
 	
+	public boolean isFlexible() {
+		return flexible;
+	}
+
+	private void setFlexible(boolean flexible) {
+		this.flexible = flexible;
+	}
+	
+	public LocalDate getExpDate() {
+		
+		return date.plusDays(NORMAL_EXP);
+		
+	}
+
+
 	@Override
 	public String toString() {
 		
 		return "Age: " + age 
-				+ "\nFinalPrice: " + getFinalPrice() + " $";
+				+ "\nFinalPrice: " + getFinalPrice() + " $"
+				+ "\nTicket exp: " + getExpDate();
 	}
 	
 }

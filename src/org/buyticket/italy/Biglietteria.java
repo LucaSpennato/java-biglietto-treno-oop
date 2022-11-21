@@ -17,7 +17,7 @@ public class Biglietteria {
 			System.out.print("Inserisci la tua età: ");
 			int userAge = sc.nextInt();
 			
-			Biglietto ticket = new Biglietto(userKm, userAge);
+			Biglietto ticket = new Biglietto(userKm, userAge, false);
 			System.out.println(ticket);
 		} catch (Exception e) {
 			// e.printStackTrace();
