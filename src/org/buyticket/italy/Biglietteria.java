@@ -1,5 +1,7 @@
 package org.buyticket.italy;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Biglietteria {
@@ -7,6 +9,8 @@ public class Biglietteria {
 	public static void main(String[] args){
 		
 		Scanner sc = null;
+		
+		Biglietto ticket = null;
 		
 		try {
 			sc = new Scanner(System.in);
@@ -30,13 +34,40 @@ public class Biglietteria {
 				System.out.println("Dati inseriti non corretti.");
 			}
 			
-			Biglietto ticket = new Biglietto(userKm, userAge, flexExp);
+			ticket = new Biglietto(userKm, userAge, flexExp);
 			System.out.println(ticket);
+			
 		} catch (Exception e) {
 			// e.printStackTrace();
 			System.err.println(e.getMessage());
 		} finally {
 			sc.close();
+		}
+		
+		FileWriter printTicket = null;
+		
+		try {
+			
+			printTicket = new FileWriter("./ticket.txt");
+			
+			printTicket.write(ticket.toString());
+			
+		} catch (IOException e) {
+			
+//			e.printStackTrace();
+			System.err.println(e.getMessage());
+			
+		} finally {
+			
+			try {
+				
+				printTicket.close();
+				
+			}catch(IOException e) {
+				
+				e.printStackTrace();
+				
+			}
 		}
 		
 	}
