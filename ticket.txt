@@ -1,3 +1,4 @@
-Age: 27
+Age: 20
 FinalPrice: 8.4 $
+Is Exp Date flexible? false
 Ticket exp: 2022-12-21

@@ -1,5 +1,7 @@
 package org.buyticket.italy;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
@@ -44,6 +46,9 @@ public class Biglietteria {
 			sc.close();
 		}
 		
+		//File Creation
+		//------------------------------------------------------------------------------------------------------------ 
+		
 		FileWriter printTicket = null;
 		
 		try {
@@ -68,6 +73,34 @@ public class Biglietteria {
 				e.printStackTrace();
 				
 			}
+		}
+		
+		// File reader
+		//------------------------------------------------------------------------------
+		
+		File fileToRead = new File("./ticket.txt");
+		Scanner fileSc = null;
+		
+		try {
+			
+			fileSc = new Scanner(fileToRead);
+			
+			while (fileSc.hasNextLine()) {
+				
+				String line = fileSc.nextLine();
+				
+				System.out.println(line);
+				
+			}
+			
+			
+		}catch(FileNotFoundException e) {
+			
+			System.err.println(e.getMessage());
+			
+		} finally {
+			
+			fileSc.close();
 		}
 		
 	}

@@ -88,7 +88,7 @@ public class Biglietto {
 		}
 	}
 	
-	public boolean isFlexible() {
+	public boolean getIsFlexible() {
 		return flexible;
 	}
 
@@ -112,6 +112,7 @@ public class Biglietto {
 		
 		return "Age: " + age 
 				+ "\nFinalPrice: " + getFinalPrice() + " $"
+				+ "\nIs Exp Date flexible? " + getIsFlexible()
 				+ "\nTicket exp: " + getExpDate();
 	}
 	
