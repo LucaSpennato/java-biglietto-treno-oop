@@ -75,7 +75,7 @@ public class Biglietto {
 	public String toString() {
 		
 		return "Age: " + age 
-				+ "\nFinalPrice: " + getFinalPrice();
+				+ "\nFinalPrice: " + getFinalPrice() + " $";
 	}
 	
 }
