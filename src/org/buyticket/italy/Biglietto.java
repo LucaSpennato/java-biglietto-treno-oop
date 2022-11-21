@@ -1,6 +1,14 @@
 package org.buyticket.italy;
 
+import java.math.BigDecimal;
+
 public class Biglietto {
+
+	private static final BigDecimal PRICE_KM = new BigDecimal(0.21);
+	
+	private static final BigDecimal ELDER_DISCOUNT = new BigDecimal(40);
+	
+	private static final BigDecimal MINOR_DISCOUNT = new BigDecimal(20);
 	
 	private int kmToRide;
 	
