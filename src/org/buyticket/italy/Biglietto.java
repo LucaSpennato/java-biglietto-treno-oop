@@ -64,11 +64,11 @@ public class Biglietto {
 		
 	}
 
-	public BigDecimal getFinalPrice() {
+	public float getFinalPrice() {
 		
 		BigDecimal price = PRICE_KM.multiply(BigDecimal.valueOf(kmToRide));
 		
-		return checkDiscount(price);
+		return checkDiscount(price).floatValue();
 	}
 	
 	@Override
